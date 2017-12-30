@@ -2,16 +2,29 @@ trigger BetterNotePermissionsTrigger on Note (before insert, before update, befo
 
    BetterNotesAttachmentsPermissions.setUserInfo(UserInfo.getUserId(), UserInfo.getProfileId());
 
-   if(Trigger.isInsert){
+   
+    if(BetterNotesAttachmentsPermissions.userHasSettings()){
+        if(Trigger.isInsert){
 
-      BetterNotesAttachmentsPermissions.checkAddPermissions(Trigger.new);
-   }
-   else if(Trigger.isUpdate){
-       BetterNotesAttachmentsPermissions.checkUpdatePermissions(Trigger.new);
-   }
-   else if(Trigger.isDelete){
+            BetterNotesAttachmentsPermissions.checkAddPermissions(Trigger.new);
+        }
+        else if(Trigger.isUpdate){
+            BetterNotesAttachmentsPermissions.checkUpdatePermissions(Trigger.new);
+        }
+        else if(Trigger.isDelete){
 
-       BetterNotesAttachmentsPermissions.checkDeletePermissions(Trigger.old);
-   }
+            BetterNotesAttachmentsPermissions.checkDeletePermissions(Trigger.old);
+        }
+    }
+    else {
+        if(Trigger.isDelete){
+            BetterNotesAttachmentsPermissions.displayError(Trigger.old);
+        }
+        else{
+            BetterNotesAttachmentsPermissions.displayError(Trigger.new);
+        }
+        
+    }
+        
   
 }

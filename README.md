@@ -3,7 +3,8 @@
 <p>-Note Permission Checking functioning</p>
 <p>-Attachment Permission Checking WIP </p>
 
-<p>Small project to create granular Note & Attachment Permissioning tools. SF is pretty limited as far as this goes with an on-off switch for Note/Attachment permissions per profile.</p>
+<p>Small project to create granular Note & Attachment Permissioning tools. SF is pretty limited as far as this goes. Standard Note/Attachment permissions are a glorified on-off switch without any middleground. This will change that.</p>
+
 <p><strong>NOTE:</strong><p>
 <p> I am using <strong>Custom Settings of the Hierachy Type</strong> to handle the permission toggling</p>
 

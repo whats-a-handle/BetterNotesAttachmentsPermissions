@@ -34,12 +34,11 @@ public class BetterNotesAttachmentsPermissions{
             displayError(noteList, errorMessage);
         }    
     }
-    public static void displayError(List<Note>noteList, String errorMessage){
+    private static void displayError(List<Note>noteList, String errorMessage){
         
-    for(Note n : noteList){
-            n.addError(errorMessage);
-    }
-
+        for(Note n : noteList){
+                n.addError(errorMessage);
+        }
     
     }
 

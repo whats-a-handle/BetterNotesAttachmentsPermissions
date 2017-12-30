@@ -10,5 +10,5 @@
 
 <p><strong>Goals:</strong></p>
 <p>Intuitive Permission Management for Notes and Attachments</p>
-<p>Triggers to prevent certain operations on Attachments depending on a Profile/User's ID and the user's selected Permission level</p>
+<p>Triggers to prevent certain operations on Notes and Attachments depending on a Profile/User's ID and the user's selected Permission level</p>
 <p>e.g. Insert, Update, Deletion permissions correspond with the relevant Trigger on-fire actions</p>

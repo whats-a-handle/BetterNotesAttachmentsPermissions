@@ -1,6 +1,6 @@
 # BetterNotesAttachmentsPermissions
 <p><strong>Update | 12-30-17</strong></p>
-<p>-Note Permission Checking functioning at Profile hierarchy level </p>
+<p>-Note Permission Checking functioning at Profile & User hierarchy levels </p>
 <p>-Attachment Permission Checking WIP </p>
 
 <p>Small project to create granular Note & Attachment Permissioning tools. SF is pretty limited as far as this goes. Standard Note/Attachment permissions are a glorified on-off switch without any middleground. This will change that.</p>

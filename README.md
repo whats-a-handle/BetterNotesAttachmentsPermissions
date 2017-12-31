@@ -1,9 +1,11 @@
 # BetterNotesAttachmentsPermissions
-<p><strong>Update | 12-30-17</strong></p>
-<p>-Note Permission Checking functioning at Profile & User hierarchy levels </p>
-<p>-Attachment Permission Checking WIP </p>
+<p><strong>Update | 12-31-17</strong></p>
+<p>-Note Permission Checking Fully Functional (User and Profile levels)</p>
+<p>-Attachment Permission Checking Fully Functional (User and Profile levels)</p>
+<p>-Added trigger to fire on Attachment insertions,udpates,deletions</p>
+<p>-BetterNotesAttachemntsPermissions class now handles both Notes & Attachments by taking Trigger.new or Trigger.old as an SOBJECT</p>
 
-<p>Small project to create granular Note & Attachment Permissioning tools. SF is pretty limited as far as this goes. Standard Note/Attachment permissions are a glorified on-off switch without any middleground. This will change that.</p>
+
 
 <p><strong>NOTE:</strong><p>
 <p> I am using <strong>Custom Settings of the Hierachy Type</strong> to handle the permission toggling</p>
@@ -18,6 +20,7 @@
 <p>-Delete_Attachment__c</p>
 
 <p><strong>Goals:</strong></p>
+<p>Small project to create granular Note & Attachment Permissioning tools. SF is pretty limited as far as this goes. Standard Note/Attachment permissions are a glorified on-off switch without any middleground. This will change that.</p>
 <p><strong>Unmanaged Package for easy install and no-fuss setup</strong><p>
 <p>Intuitive Permission Management for Notes and Attachments</p>
 <p>Triggers to prevent certain operations on Notes and Attachments depending on a Profile/User's ID and the user's selected Permission level</p>

@@ -17,9 +17,11 @@
 <p>Delete_Attachment__c</p>
 
 <p><strong>Goals:</strong></p>
+<p><strong>Unmanaged Package for easy install and no-fuss setup</strong><p>
 <p>Intuitive Permission Management for Notes and Attachments</p>
 <p>Triggers to prevent certain operations on Notes and Attachments depending on a Profile/User's ID and the user's selected Permission level</p>
 <p>e.g. Insert, Update, Deletion permissions correspond with the relevant Trigger on-fire actions</p>
+
 
 <p><strong>How It Will Work:</strong></p>
 <p>The information below is how I intend for the completed code to function. It is currently a work in Progress and not 100% functional, so this information is not specific to what has been completed.</p>

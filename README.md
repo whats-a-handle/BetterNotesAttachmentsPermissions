@@ -3,7 +3,7 @@
 <p>-Note Permission Checking Fully Functional (User and Profile levels)</p>
 <p>-Attachment Permission Checking Fully Functional (User and Profile levels)</p>
 <p>-Added trigger to fire on Attachment insertions,udpates,deletions</p>
-<p>-BetterNotesAttachemntsPermissions class now handles both Notes & Attachments by taking Trigger.new or Trigger.old as an SOBJECT</p>
+<p>-BetterNotesAttachemntsPermissions class now handles both Notes & Attachments by taking Trigger.new or Trigger.old as an SObject List</p>
 
 
 

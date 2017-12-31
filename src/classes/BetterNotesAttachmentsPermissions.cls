@@ -1,4 +1,4 @@
-public class BetterNotesAttachmentsPermissions{
+public with sharing class BetterNotesAttachmentsPermissions{
 
 
     private static Id userID;

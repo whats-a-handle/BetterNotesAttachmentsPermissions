@@ -8,7 +8,10 @@ public with sharing class BetterNotesAttachmentsPermissions{
     private static String errorMessage;
     private static boolean hasProfileSettings = false;
     private static boolean hasIDSettings = false;
-    private static Map<String,Boolean> userPermissionMap = new Map<String,Boolean>{'insert' =>false,'update'=>false,'delete'=>false};
+    private static SObjectType objectType;
+    private static Map<SObjectType,Map<String,Boolean>> userPermissionMap = new Map<SOBJECTType,Map<String,Boolean>>{
+        Note.SObjectType => new Map<String,Boolean> {'insert' =>false,'update'=>false,'poke'=>false},
+        Attachment.SObjectType => new Map<String,Boolean>{'insert'=>false,'update'=>false,'delete'=>false}};         
 
     public static void setUserInfo(Id userInfoID, Id userInfoProfileID){
         userId = userInfoID;
@@ -32,46 +35,55 @@ public with sharing class BetterNotesAttachmentsPermissions{
 
         if(hasProfileSettings){
 
-            userPermissionMap.put('insert',userProfileSettings.Insert_Note__c);
-            userPermissionMap.put('update',userProfileSettings.Update_Note__c);
-            userPermissionMap.put('delete',userProfileSettings.Delete_Note__c);
+            userPermissionMap.get(Note.getSObjectType()).put('insert',userProfileSettings.Insert_Note__c);
+            userPermissionMap.get(Note.getSObjectType()).put('update',userProfileSettings.Update_Note__c);
+            userPermissionMap.get(Note.getSObjectType()).put('delete',userProfileSettings.Delete_Note__c);
+            userPermissionMap.get(Attachment.getSObjectType()).put('insert',userProfileSettings.Insert_Attachment__c);
+            userPermissionMap.get(Attachment.getSObjectType()).put('update',userProfileSettings.Update_Attachment__c);
+            userPermissionMap.get(Attachment.getSObjectType()).put('delete',userProfileSettings.Delete_Attachment__c);
 
         }
 
         if(hasIDSettings){
 
-            userPermissionMap.put('insert',userIDSettings.Insert_Note__c);
-            userPermissionMap.put('update',userIDSettings.Update_Note__c);
-            userPermissionMap.put('delete',userIDSettings.Delete_Note__c);
+            userPermissionMap.get(Note.getSObjectType()).put('insert',userIDSettings.Insert_Note__c);
+            userPermissionMap.get(Note.getSObjectType()).put('update',userIDSettings.Update_Note__c);
+            userPermissionMap.get(Note.getSObjectType()).put('delete',userIDSettings.Delete_Note__c);
+            userPermissionMap.get(Attachment.getSObjectType()).put('insert',userIDSettings.Insert_Attachment__c);
+            userPermissionMap.get(Attachment.getSObjectType()).put('update',userIDSettings.Update_Attachment__c);
+            userPermissionMap.get(Attachment.getSObjectType()).put('delete',userIDSettings.Delete_Attachment__c);
+
 
         }
 
     }
    
 
-    public static void checkAddPermissions(List<Note> noteList){
-        errorMessage = 'You do not have permission to INSERT notes';
-        if(!userPermissionMap.get('insert')){
-            displayError(noteList);
+    public static void checkAddPermissions(List<SOBJECT> noteAttachList){
+        
+        errorMessage = 'You do not have permission to INSERT ' + String.valueOf(noteAttachList.getSObjectType()) + 's';
+        if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('insert')){
+            displayError(noteAttachList);
         }
   
     }
-    public static void checkUpdatePermissions( List<Note> noteList){
-        errorMessage = 'You do not have permission to UPDATE notes';
-        if(!userPermissionMap.get('update')){
-            displayError(noteList);
+    public static void checkUpdatePermissions( List<SOBJECT> noteAttachList){
+        errorMessage = 'You do not have permission to UPDATE ' + String.valueOf(noteAttachList.getSObjectType()) + 's';
+        if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('update')){
+            displayError(noteAttachList);
         }
+
     }
 
-    public static void checkDeletePermissions(List<Note> noteList){
-        errorMessage = 'You do not have permission to DELETE notes';
-        if(!userPermissionMap.get('delete')){
-            displayError(noteList);
+    public static void checkDeletePermissions(List<SOBJECT> noteAttachList){
+        errorMessage = 'You do not have permission to DELETE ' + String.valueOf(noteAttachList.getSObjectType()) + 's';
+        if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('delete')){
+            displayError(noteAttachList);
         }    
     }
-    public static void displayError(List<Note>noteList){
+    public static void displayError(List<SOBJECT>noteAttachList){
         
-        for(Note n : noteList){
+        for(SOBJECT n : noteAttachList){
                 n.addError(errorMessage);
         }
     

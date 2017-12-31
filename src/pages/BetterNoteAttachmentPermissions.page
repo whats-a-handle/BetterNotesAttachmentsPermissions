@@ -31,16 +31,28 @@
       </apex:pageBlock>
       <apex:pageBlock title="Note Permissions">
         <apex:pageBlockTable value="{!selectedUser}" var="user" >
-          <apex:column headervalue="Insert" value="{!user.permissions.Insert_Note__c}"/>
-          <apex:column headervalue="Update" value="{!user.permissions.Update_Note__c}"/>
-          <apex:column headervalue="Delete" value="{!user.permissions.Delete_Note__c}"/>
+          <apex:column headervalue="Insert">
+              <apex:inputCheckbox value="{!user.permissions.Insert_Note__c}"/>
+          </apex:column>
+          <apex:column headervalue="Update">
+              <apex:inputCheckbox value="{!user.permissions.Update_Note__c}"/>
+          </apex:column>
+          <apex:column headervalue="Delete">
+              <apex:inputCheckbox value="{!user.permissions.Delete_Note__c}"/>
+          </apex:column>
         </apex:pageBlockTable>
       </apex:pageBlock>
       <apex:pageBlock title="Attachment Permissions">
         <apex:pageBlockTable value="{!selectedUser}" var="user" >
-          <apex:column headervalue="Insert" value="{!user.permissions.Insert_Attachment__c}"/>
-          <apex:column headervalue="Update" value="{!user.permissions.Update_Attachment__c}"/>
-          <apex:column headervalue="Delete" value="{!user.permissions.Delete_Attachment__c}"/>
+          <apex:column headervalue="Insert">
+              <apex:inputCheckbox value="{!user.permissions.Insert_Attachment__c}"/>
+          </apex:column>
+          <apex:column headervalue="Update">
+              <apex:inputCheckbox value="{!user.permissions.Update_Attachment__c}"/>
+          </apex:column>
+          <apex:column headervalue="Delete">
+              <apex:inputCheckbox value="{!user.permissions.Delete_Attachment__c}"/>
+          </apex:column>
         </apex:pageBlockTable>
       </apex:pageBlock>
     </apex:outputPanel>

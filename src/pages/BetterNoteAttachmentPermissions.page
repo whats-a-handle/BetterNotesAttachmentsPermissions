@@ -1,6 +1,48 @@
-<apex:page >
-  <!-- Begin Default Content REMOVE THIS -->
-  <h1>Congratulations</h1>
-  This is your new Page: BetterNoteAttachmentPermissions
-  <!-- End Default Content REMOVE THIS -->
+<apex:page controller="BetterNotesAttachmentsController" >
+  <apex:form >
+    <apex:outputPanel >
+      <apex:pageBlock title="Users">
+        <apex:pageBlockTable value="{!userList}" var="use">
+          <apex:column headerValue="Choose User">
+            <apex:commandButton value="Select" action="{!selectUser}" reRender="selectedUserTable">
+              <apex:param name="a" value="{!use.uid}" assignTo="{!selectedUserID}"/>
+            </apex:commandButton>
+          </apex:column>
+          <apex:column headerValue="Name" value="{!use.name}"/>
+          <apex:column headerValue="Email" value="{!use.email}"/>
+
+          <apex:column headerValue="Note Insert" value="{!use.permissions.Insert_Note__c}" />
+          <apex:column headerValue="Note Update" value="{!use.permissions.Update_Note__c}" />
+          <apex:column headerValue="Note Delete" value="{!use.permissions.Delete_Note__c}" />
+
+          <apex:column headerValue="Attach Insert" value="{!use.permissions.Insert_Attachment__c}"/>
+          <apex:column headerValue="Attach Update" value="{!use.permissions.Update_Attachment__c}"/>
+          <apex:column headerValue="Attach Delete" value="{!use.permissions.Delete_Attachment__c}"/>
+        </apex:pageBlockTable>
+      </apex:pageBlock>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="selectedUserTable" >
+      <apex:pageBlock title="Selected User">
+        <apex:pageBlockTable value="{!selectedUser}" var="user">
+          <apex:column headerValue="Name" value="{!user.Name}"/>
+          <apex:column headerValue="Email" value="{!user.Email}"/>
+        </apex:pageBlockTable>
+      </apex:pageBlock>
+      <apex:pageBlock title="Note Permissions">
+        <apex:pageBlockTable value="{!selectedUser}" var="user" >
+          <apex:column headervalue="Insert" value="{!user.permissions.Insert_Note__c}"/>
+          <apex:column headervalue="Update" value="{!user.permissions.Update_Note__c}"/>
+          <apex:column headervalue="Delete" value="{!user.permissions.Delete_Note__c}"/>
+        </apex:pageBlockTable>
+      </apex:pageBlock>
+      <apex:pageBlock title="Attachment Permissions">
+        <apex:pageBlockTable value="{!selectedUser}" var="user" >
+          <apex:column headervalue="Insert" value="{!user.permissions.Insert_Attachment__c}"/>
+          <apex:column headervalue="Update" value="{!user.permissions.Update_Attachment__c}"/>
+          <apex:column headervalue="Delete" value="{!user.permissions.Delete_Attachment__c}"/>
+        </apex:pageBlockTable>
+      </apex:pageBlock>
+    </apex:outputPanel>
+  </apex:form>
 </apex:page>

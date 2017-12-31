@@ -1,9 +1,7 @@
 trigger BetterNotePermissionsTrigger on Note (before insert, before update, before delete) {
 
    BetterNotesAttachmentsPermissions.setUserInfo(UserInfo.getUserId(), UserInfo.getProfileId());
-
    
-    if(BetterNotesAttachmentsPermissions.userHasSettings()){
         if(Trigger.isInsert){
 
             BetterNotesAttachmentsPermissions.checkAddPermissions(Trigger.new);
@@ -15,16 +13,5 @@ trigger BetterNotePermissionsTrigger on Note (before insert, before update, befo
 
             BetterNotesAttachmentsPermissions.checkDeletePermissions(Trigger.old);
         }
-    }
-    else {
-        if(Trigger.isDelete){
-            BetterNotesAttachmentsPermissions.displayError(Trigger.old);
-        }
-        else{
-            BetterNotesAttachmentsPermissions.displayError(Trigger.new);
-        }
-        
-    }
-        
-  
 }
+               

@@ -8,13 +8,14 @@
 <p><strong>NOTE:</strong><p>
 <p> I am using <strong>Custom Settings of the Hierachy Type</strong> to handle the permission toggling</p>
 <p> If you'd like to use the code, you'll need to create a Custom Setting named <strong>BetterNotesAttachmentsSettings</strong> of the Hiearchy Type, and create the following "fields" under that. You can certainly use your own Custom Setting name, but be sure to adjust the code accordingly.</p>
-<p>Insert_Note__c</p>
-<p>Update_Note__c</p>
-<p>Delete_Note__c</p>
-<p></p>
-<p>Insert_Attachment__c</p>
-<p>Update_Attachment__c</p>
-<p>Delete_Attachment__c</p>
+<p><strong>Note-specific Custom Setting fields</strong></p>
+<p>-Insert_Note__c</p>
+<p>-Update_Note__c</p>
+<p>-Delete_Note__c</p>
+<p><strong>Attachment-specific Custom Setting fields</strong></p>
+<p>-Insert_Attachment__c</p>
+<p>-Update_Attachment__c</p>
+<p>-Delete_Attachment__c</p>
 
 <p><strong>Goals:</strong></p>
 <p><strong>Unmanaged Package for easy install and no-fuss setup</strong><p>

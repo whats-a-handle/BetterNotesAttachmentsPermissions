@@ -4,7 +4,7 @@
 <p>-Attachment Permission Checking Fully Functional (User and Profile levels)</p>
 <p>-Added trigger to fire on Attachment insertions,udpates,deletions</p>
 <p>-BetterNotesAttachemntsPermissions class now handles both Notes & Attachments by taking Trigger.new or Trigger.old as an SObject List</p>
-<p>Visualforce Page for easy permissioning is now in-progress</p>
+<p>-Visualforce Page for easy permissioning is now in-progress</p>
 
 
 

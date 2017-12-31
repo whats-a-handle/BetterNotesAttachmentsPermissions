@@ -39,31 +39,25 @@ public with sharing class BetterNotesAttachmentsPermissions{
     private static void setPermissionMap(){
 
         if(hasProfileSettings){
-
             userPermissionMap.get(Note.getSObjectType()).put('insert',userProfileSettings.Insert_Note__c);
             userPermissionMap.get(Note.getSObjectType()).put('update',userProfileSettings.Update_Note__c);
             userPermissionMap.get(Note.getSObjectType()).put('delete',userProfileSettings.Delete_Note__c);
             userPermissionMap.get(Attachment.getSObjectType()).put('insert',userProfileSettings.Insert_Attachment__c);
             userPermissionMap.get(Attachment.getSObjectType()).put('update',userProfileSettings.Update_Attachment__c);
             userPermissionMap.get(Attachment.getSObjectType()).put('delete',userProfileSettings.Delete_Attachment__c);
-
         }
 
         if(hasIDSettings){
-
             userPermissionMap.get(Note.getSObjectType()).put('insert',userIDSettings.Insert_Note__c);
             userPermissionMap.get(Note.getSObjectType()).put('update',userIDSettings.Update_Note__c);
             userPermissionMap.get(Note.getSObjectType()).put('delete',userIDSettings.Delete_Note__c);
             userPermissionMap.get(Attachment.getSObjectType()).put('insert',userIDSettings.Insert_Attachment__c);
             userPermissionMap.get(Attachment.getSObjectType()).put('update',userIDSettings.Update_Attachment__c);
             userPermissionMap.get(Attachment.getSObjectType()).put('delete',userIDSettings.Delete_Attachment__c);
-
-
         }
     }
    
     public static void checkAddPermissions(List<SOBJECT> noteAttachList){
-        
         errorMessage = 'You do not have permission to INSERT ' + String.valueOf(noteAttachList.getSObjectType()) + 's';
         if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('insert')){
             displayError(noteAttachList);
@@ -81,8 +75,6 @@ public with sharing class BetterNotesAttachmentsPermissions{
         if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('delete')){
             displayError(noteAttachList);
         }    
-
-        System.Debug(userPermissionMap);
     }
     private static void displayError(List<SOBJECT>noteAttachList){  
         for(SOBJECT n : noteAttachList){

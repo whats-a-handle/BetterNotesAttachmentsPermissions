@@ -12,10 +12,6 @@ public with sharing class BetterNotesAttachmentsUser{
         uid = newUser.id;
         permissions = BetterNotesAttachmentsSettings__c.getValues(newUser.id);
 
-        if(permissions == null){
-            permissions = new BetterNotesAttachmentsSettings__c();
-        }
-
     } 
 
         

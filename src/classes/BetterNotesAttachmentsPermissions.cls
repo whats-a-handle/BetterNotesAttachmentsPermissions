@@ -10,7 +10,7 @@ public with sharing class BetterNotesAttachmentsPermissions{
     private static boolean hasIDSettings = false;
     private static SObjectType objectType;
     private static Map<SObjectType,Map<String,Boolean>> userPermissionMap = new Map<SOBJECTType,Map<String,Boolean>>{
-        Note.SObjectType => new Map<String,Boolean> {'insert' =>false,'update'=>false,'poke'=>false},
+        Note.SObjectType => new Map<String,Boolean> {'insert' =>false,'update'=>false,'delete'=>false},
         Attachment.SObjectType => new Map<String,Boolean>{'insert'=>false,'update'=>false,'delete'=>false}};         
 
     public static void setUserInfo(Id userInfoID, Id userInfoProfileID){
@@ -27,11 +27,16 @@ public with sharing class BetterNotesAttachmentsPermissions{
             hasIDSettings = true;
         }
 
+        if(userProfileSettings == null && userIDSettings == null){
+            userProfileSettings = new BetterNotesAttachmentsSettings__c();
+            userIDSettings = new BetterNotesAttachmentsSettings__c();
+        }
+
         setPermissionMap();
  
     }
 
-    public static void setPermissionMap(){
+    private static void setPermissionMap(){
 
         if(hasProfileSettings){
 
@@ -55,24 +60,20 @@ public with sharing class BetterNotesAttachmentsPermissions{
 
 
         }
-
     }
    
-
     public static void checkAddPermissions(List<SOBJECT> noteAttachList){
         
         errorMessage = 'You do not have permission to INSERT ' + String.valueOf(noteAttachList.getSObjectType()) + 's';
         if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('insert')){
             displayError(noteAttachList);
         }
-  
     }
     public static void checkUpdatePermissions( List<SOBJECT> noteAttachList){
         errorMessage = 'You do not have permission to UPDATE ' + String.valueOf(noteAttachList.getSObjectType()) + 's';
         if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('update')){
             displayError(noteAttachList);
         }
-
     }
 
     public static void checkDeletePermissions(List<SOBJECT> noteAttachList){
@@ -80,13 +81,13 @@ public with sharing class BetterNotesAttachmentsPermissions{
         if(!userPermissionMap.get(noteAttachList.getSObjectType()).get('delete')){
             displayError(noteAttachList);
         }    
+
+        System.Debug(userPermissionMap);
     }
-    public static void displayError(List<SOBJECT>noteAttachList){
-        
+    private static void displayError(List<SOBJECT>noteAttachList){  
         for(SOBJECT n : noteAttachList){
                 n.addError(errorMessage);
-        }
-    
+        }   
     }
 
 

@@ -1,8 +1,8 @@
 <apex:page controller="BetterNotesAttachmentsController" >
   <apex:form >
-    <apex:outputPanel >
+    <apex:outputPanel id="userTable">
       <apex:pageBlock title="Users">
-        <apex:pageBlockTable value="{!userList}" var="use">
+        <apex:pageBlockTable value="{!wrappedUsers}" var="use">
           <apex:column headerValue="Choose User">
             <apex:commandButton value="Select" action="{!selectUser}" reRender="selectedUserTable">
               <apex:param name="a" value="{!use.uid}" assignTo="{!selectedUserID}"/>
@@ -23,7 +23,10 @@
     </apex:outputPanel>
 
     <apex:outputPanel id="selectedUserTable" >
+    
       <apex:pageBlock title="Selected User">
+          <apex:pageMessages >
+          </apex:pageMessages>
         <apex:pageBlockTable value="{!selectedUser}" var="user">
           <apex:column headerValue="Name" value="{!user.Name}"/>
           <apex:column headerValue="Email" value="{!user.Email}"/>
@@ -32,13 +35,22 @@
       <apex:pageBlock title="Note Permissions">
         <apex:pageBlockTable value="{!selectedUser}" var="user" >
           <apex:column headervalue="Insert">
-              <apex:inputCheckbox value="{!user.permissions.Insert_Note__c}"/>
+              <apex:inputCheckbox value="{!user.permissions.Insert_Note__c}">
+                  <apex:actionSupport event="onchange" action="{!updateNoteInsert}" reRender="userTable,selectedUserTable">
+                  </apex:actionSupport>
+              </apex:inputCheckbox>
           </apex:column>
           <apex:column headervalue="Update">
-              <apex:inputCheckbox value="{!user.permissions.Update_Note__c}"/>
+              <apex:inputCheckbox value="{!user.permissions.Update_Note__c}">
+                  <apex:actionSupport event="onchange" action="{!updateNoteUpdate}" reRender="userTable,selectedUserTable">
+                  </apex:actionSupport>
+              </apex:inputCheckbox>
           </apex:column>
           <apex:column headervalue="Delete">
-              <apex:inputCheckbox value="{!user.permissions.Delete_Note__c}"/>
+              <apex:inputCheckbox value="{!user.permissions.Delete_Note__c}">
+                  <apex:actionSupport event="onchange" action="{!updateNoteDelete}" reRender="userTable,selectedUserTable">
+                  </apex:actionSupport>
+              </apex:inputCheckbox>
           </apex:column>
         </apex:pageBlockTable>
       </apex:pageBlock>

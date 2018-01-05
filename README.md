@@ -1,5 +1,7 @@
 # BetterNotesAttachmentsPermissions
-<p><strong>Update | 12-31-17</strong></p>
+<p><strong>Update | 01-04-18</strong></p>
+<p>Pushed missing commit for Visualforce User-level permissioning page</p>
+<p> <strong>12-31-</strong></p>
 <p>-Note Permission Checking Fully Functional (User and Profile levels)</p>
 <p>-Attachment Permission Checking Fully Functional (User and Profile levels)</p>
 <p>-Visualforce Page for easy permissioning is now in-progress</p>

@@ -3,24 +3,40 @@ public with sharing class BetterNotesAttachmentsController {
     public List<BetterNotesAttachmentsUser> wrappedUsers {get;set;}
     public BetterNotesAttachmentsUser selectedUser {get;set;}
     public string selectedUserID {get;set;}
-    
+    public integer offset {get;set;}
+    private integer queryLimit {get;set;}
+
     public BetterNotesAttachmentsController(){
+        offset = 0;
+        queryLimit = 25;
         wrappedUsers = new List<BetterNotesAttachmentsUser>();
         getUserList();   
     }
- 
-
+  
     public void getUserList(){
 
         if(wrappedUsers != null){
             wrappedUsers.clear();
         }
-        List<User> userRecords = [Select Id, Name, Email FROM User];
+        List<User> userRecords = [Select Id, Name, Email FROM User Limit: queryLimit OFFSET: offSet];
 
         for(User u : userRecords){
 
             wrappedUsers.add(new BetterNotesAttachmentsUser(u));
         }
+    }
+
+    public void queryNext(){
+        offSet += queryLimit;
+        getUserList();
+    }
+
+    public void queryPrevious(){
+        offSet -= queryLimit;
+        if(offSet < 0){
+            offSet = 0;
+        }
+        getUserList();
     }
 
     public void selectUser(){
@@ -50,7 +66,7 @@ public with sharing class BetterNotesAttachmentsController {
         else{
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.INFO,'Selected User has an entry in Custom Settings. Please proceed!'));
         }
-
+ 
     }
 
     public void updateNoteInsert(){

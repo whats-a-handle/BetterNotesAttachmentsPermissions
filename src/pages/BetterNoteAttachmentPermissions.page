@@ -2,6 +2,8 @@
   <apex:form >
     <apex:outputPanel id="userTable">
       <apex:pageBlock title="Users">
+        <apex:commandButton value="Previous {!queryLimit}" action="{!queryPrevious}" rerender="userTable,selectedUserTable" rendered="{!IF(offset > 0, true, false)}"/>
+        <apex:commandButton value="Next {!queryLimit}" action="{!queryNext}" reRender="userTable,selectedUserTable"/>
         <apex:pageBlockTable value="{!wrappedUsers}" var="use">
           <apex:column headerValue="Choose User">
             <apex:commandButton value="Select" action="{!selectUser}" reRender="selectedUserTable">
@@ -32,8 +34,8 @@
           <apex:column headerValue="Email" value="{!user.Email}"/>
         </apex:pageBlockTable>
       </apex:pageBlock>
-      <apex:pageBlock title="Note Permissions">
-        <apex:pageBlockTable value="{!selectedUser}" var="user" >
+      <apex:pageBlock title="Note Permissions" >
+        <apex:pageBlockTable value="{!selectedUser}" var="user" id="notePermissions" >
           <apex:column headervalue="Insert">
               <apex:inputCheckbox value="{!user.permissions.Insert_Note__c}">
                   <apex:actionSupport event="onchange" action="{!updateNoteInsert}" reRender="userTable,selectedUserTable">

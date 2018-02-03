@@ -1,13 +1,6 @@
 # BetterNotesAttachmentsPermissions
-<p><strong>Update | 01-04-18</strong></p>
-<p>Pushed missing commit for Visualforce User-level permissioning page</p>
-<p> <strong>12-31-17</strong></p>
-<p>-Note Permission Checking Fully Functional (User and Profile levels)</p>
-<p>-Attachment Permission Checking Fully Functional (User and Profile levels)</p>
-<p>-Visualforce Page for easy permissioning is now in-progress</p>
-<p>-Visualforce Page can now be used to easily set User Note Permissions</p>
-<p>-Attachment Permissioning is next on the list for Visualforce Page </p>
-
+<p><strong>Update | 02-03-18</strong></p>
+<p>Basic <strong>Pagination</strong> working</p>
 
 <p><strong>NOTE:</strong><p>
 <p> I am using <strong>Custom Settings of the Hierachy Type</strong> to handle the permission toggling</p>

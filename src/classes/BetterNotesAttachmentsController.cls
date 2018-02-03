@@ -4,7 +4,7 @@ public with sharing class BetterNotesAttachmentsController {
     public BetterNotesAttachmentsUser selectedUser {get;set;}
     public string selectedUserID {get;set;}
     public integer offset {get;set;}
-    private integer queryLimit {get;set;}
+    public integer queryLimit {get;set;}
 
     public BetterNotesAttachmentsController(){
         offset = 0;
